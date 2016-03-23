@@ -1,0 +1,56 @@
+{
+  "name": "react-nest-thermostat",
+  "version": "0.1.0",
+  "description": "A React.js component for displaying the face of a Nest thermostat.",
+  "main": "src/react-nest-thermostat.js",
+  "scripts": {
+    "basic-example": "browserify -t babelify example/js/index.js -o example/js/bundle.js && node example/js/basic.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kevinmellott91/react-nest-thermostat.git"
+  },
+  "keywords": [
+    "React.js",
+    "React",
+    "html",
+    "Nest",
+    "thermostat",
+    "component",
+    "react-component"
+  ],
+  "author": "Kevin Mellott <kevin.r.mellott@gmail.com> (https://www.github.com/kevinmellott91)",
+  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/kevinmellott91/react-nest-thermostat/blob/master/LICENSE"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/kevinmellott91/react-nest-thermostat/issues"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "homepage": "https://github.com/kevinmellott91/react-nest-thermostat",
+  "devDependencies": {
+    "babelify": "7.2.0",
+    "babel-preset-react": "6.5.0",
+    "browserify": "13.0.0",
+    "react": "0.14.7",
+    "react-dom": "0.14.7",
+    "express": "4.13.4",
+    "path": "0.12.7"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "browserDependencies": {
+  },
+  "dependencies": {
+    "react": "0.14.7"
+  }
+}
