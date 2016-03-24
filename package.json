@@ -1,6 +1,6 @@
 {
   "name": "react-nest-thermostat",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A React.js component for displaying the face of a Nest thermostat.",
   "main": "src/react-nest-thermostat.js",
   "scripts": {
@@ -37,18 +37,19 @@
   },
   "homepage": "https://github.com/kevinmellott91/react-nest-thermostat",
   "devDependencies": {
-    "babelify": "7.2.0",
     "babel-preset-react": "6.5.0",
+    "babelify": "7.2.0",
     "browserify": "13.0.0",
-    "react": "0.14.7",
-    "react-dom": "0.14.7",
+    "eslint": "^2.4.0",
+    "eslint-config-airbnb": "^6.2.0",
+    "eslint-plugin-react": "^4.2.3",
     "express": "4.13.4",
-    "path": "0.12.7"
+    "path": "0.12.7",
+    "react": "0.14.7",
+    "react-dom": "0.14.7"
   },
-  "peerDependencies": {
-  },
-  "browserDependencies": {
-  },
+  "peerDependencies": {},
+  "browserDependencies": {},
   "dependencies": {
     "react": "0.14.7"
   }

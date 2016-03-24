@@ -1,170 +1,170 @@
-var React = require('react')
-var ReactDOM = require('react-dom')
-var Thermostat = require('../../src/react-nest-thermostat.js')
+const React = require('react');
+const ReactDOM = require('react-dom');
+const Thermostat = require('../../src/react-nest-thermostat.js');
 
-var App = React.createClass({
-  displayName: 'App',
-  getDefaultProps() {
-    return {
-      minTemperature: 50,
-      maxTemperature: 90
-    };
-  },
-  getInitialState() {
-    return {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       away: false,
       ambientTemperature: 74,
       targetTemperature: 68,
       hvacMode: 'off',
       leaf: false,
     };
-  },
-  handleModeChange: function (event) {
-    this.setState({away: JSON.parse(event.target.value)})
-  },
-  handleHvacModeChange: function (event) {
-    this.setState({hvacMode: event.target.value})
-  },
-  handleAmbientTemperatureChange: function (event) {
-    this.setState({ambientTemperature: event.target.value})
-  },
-  handleTargetTemperatureChange: function (event) {
-    this.setState({targetTemperature: event.target.value})
-  },
-  handleLeafChange: function (event) {
-    this.setState({leaf: JSON.parse(event.target.value)})
-  },
-  render: function () {
+  }
+
+  handleModeChange(event) {
+    this.setState({ away: JSON.parse(event.target.value) });
+  }
+
+  handleHvacModeChange(event) {
+    this.setState({ hvacMode: event.target.value });
+  }
+
+  handleAmbientTemperatureChange(event) {
+    this.setState({ ambientTemperature: parseFloat(event.target.value) });
+  }
+
+  handleTargetTemperatureChange(event) {
+    this.setState({ targetTemperature: parseFloat(event.target.value) });
+  }
+
+  handleLeafChange(event) {
+    this.setState({ leaf: JSON.parse(event.target.value) });
+  }
+
+  render() {
     // Link the thermostat state to the application.
-    var thermostat = React.createElement(Thermostat, {
-      'height': '400px',
-      'width': '400px',
-      'away': this.state.away,
-      'ambientTemperature': this.state.ambientTemperature,
-      'targetTemperature': this.state.targetTemperature,
-      'hvacMode': this.state.hvacMode,
-      'leaf': this.state.leaf
+    const thermostat = React.createElement(Thermostat, {
+      height: '400px',
+      width: '400px',
+      away: this.state.away,
+      ambientTemperature: this.state.ambientTemperature,
+      targetTemperature: this.state.targetTemperature,
+      hvacMode: this.state.hvacMode,
+      leaf: this.state.leaf,
     });
 
     // Setup the example application element.
-    var app = React.createElement('div', {},
+    const app = React.createElement('div', {},
       React.createElement('h1', {
-        'className': 'cover-heading space-after'
+        className: 'cover-heading space-after',
       }, 'react-nest-thermostat'),
       thermostat,
       React.createElement('div', {
-        'className': 'row space-before'
+        className: 'row space-before',
       },
         React.createElement('div', {
-          'className': 'col-md-6'
+          className: 'col-md-6',
         },
           React.createElement('div', {
-            'className': 'form-group'
+            className: 'form-group',
           },
             React.createElement('label', {
-              'htmlFor': 'ambientTemperature'
+              htmlFor: 'ambientTemperature',
             }, 'Ambient Temperature'),
             React.createElement('input', {
-              'id': 'ambientTemperature',
-              'type': 'range',
-              'defaultValue': this.state.ambientTemperature,
-              'min': this.props.minTemperature,
-              'max': this.props.maxTemperature,
-              'onChange': this.handleAmbientTemperatureChange
+              id: 'ambientTemperature',
+              type: 'range',
+              defaultValue: this.state.ambientTemperature,
+              min: this.props.minTemperature,
+              max: this.props.maxTemperature,
+              onChange: this.handleAmbientTemperatureChange.bind(this),
             })
           )
         ),
         React.createElement('div', {
-          'className': 'col-md-6'
+          className: 'col-md-6',
         },
           React.createElement('div', {
-            'className': 'form-group'
+            className: 'form-group',
           },
             React.createElement('label', {
-              'htmlFor': 'targetTemperature'
+              htmlFor: 'targetTemperature',
             }, 'Target Temperature'),
             React.createElement('input', {
-              'id': 'targetTemperature',
-              'type': 'range',
-              'defaultValue': this.state.targetTemperature,
-              'min': this.props.minTemperature,
-              'max': this.props.maxTemperature,
-              'onChange': this.handleTargetTemperatureChange
+              id: 'targetTemperature',
+              type: 'range',
+              defaultValue: this.state.targetTemperature,
+              min: this.props.minTemperature,
+              max: this.props.maxTemperature,
+              onChange: this.handleTargetTemperatureChange.bind(this),
             })
           )
         )
       ),
       React.createElement('div', {
-        'className': 'row space-before'
+        className: 'row space-before',
       },
         React.createElement('div', {
-          'className': 'col-md-4'
+          className: 'col-md-4',
         },
           React.createElement('div', {
-            'className': 'form-group'
+            className: 'form-group',
           },
             React.createElement('label', {
-              'htmlFor': 'hvacModePicker'
+              htmlFor: 'hvacModePicker',
             }, 'State'),
             React.createElement('select', {
-              'id': 'hvacModePicker',
-              'className': 'selectpicker',
-              'onChange': this.handleHvacModeChange
+              id: 'hvacModePicker',
+              className: 'selectpicker',
+              onChange: this.handleHvacModeChange.bind(this),
             },
               React.createElement('option', {
-                'value': 'off'
+                value: 'off',
               }, 'Off'),
               React.createElement('option', {
-                'value': 'heating'
+                value: 'heating',
               }, 'Heating'),
               React.createElement('option', {
-                'value': 'cooling'
+                value: 'cooling',
               }, 'Cooling')
             )
           )
         ),
         React.createElement('div', {
-          'className': 'col-md-4'
+          className: 'col-md-4',
         },
           React.createElement('div', {
-            'className': 'form-group'
+            className: 'form-group',
           },
             React.createElement('label', {
-              'htmlFor': 'modePicker'
+              htmlFor: 'modePicker',
             }, 'Away'),
             React.createElement('select', {
-              'id': 'modePicker',
-              'className': 'selectpicker',
-              'onChange': this.handleModeChange
+              id: 'modePicker',
+              className: 'selectpicker',
+              onChange: this.handleModeChange.bind(this),
             },
               React.createElement('option', {
-                'value': false
+                value: false,
               }, 'No'),
               React.createElement('option', {
-                'value': true
+                value: true,
               }, 'Yes')
             )
           )
         ),
         React.createElement('div', {
-          'className': 'col-md-4'
+          className: 'col-md-4',
         },
           React.createElement('div', {
-            'className': 'form-group'
+            className: 'form-group',
           },
             React.createElement('label', {
-              'htmlFor': 'leafPicker'
+              htmlFor: 'leafPicker',
             }, 'Leaf'),
             React.createElement('select', {
-              'id': 'leafPicker',
-              'className': 'selectpicker',
-              'onChange': this.handleLeafChange
+              id: 'leafPicker',
+              className: 'selectpicker',
+              onChange: this.handleLeafChange.bind(this),
             },
               React.createElement('option', {
-                'value': false
+                value: false,
               }, 'No'),
               React.createElement('option', {
-                'value': true
+                value: true,
               }, 'Yes')
             )
           )
@@ -173,9 +173,22 @@ var App = React.createClass({
     );
     return app;
   }
-})
+}
 
+App.propTypes = {
+  /* Lowest temperature able to be displayed on the thermostat */
+  minTemperature: React.PropTypes.number,
+  /* Highest temperature able to be displayed on the thermostat */
+  maxTemperature: React.PropTypes.number,
+};
+
+App.defaultProps = {
+  minTemperature: 50,
+  maxTemperature: 90,
+};
+
+// Render the application in the reserved placeholder element.
 ReactDOM.render(
   React.createElement(App),
   document.getElementById('app')
-)
+);
