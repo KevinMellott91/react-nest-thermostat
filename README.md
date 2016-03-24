@@ -9,8 +9,9 @@ npm install react-nest-thermostat
 ### Demo
 You can run built-in demo example via few simple steps:<br />
 1. `git clone https://github.com/KevinMellott91/react-nest-thermostat.git`<br />
-2. `npm run-script basic-example`<br />
-3. Browse to http://localhost:3000
+2. `npm install`<br />
+3. `npm run-script basic-example`<br />
+4. Browse to http://localhost:3000
 
 ### Component (primary) properties
 - `away` (Boolean) - true/false to indicate if the Nest is in "away mode"

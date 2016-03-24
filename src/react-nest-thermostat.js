@@ -121,10 +121,10 @@ var Thermostat = React.createClass({
 
     // Determine if the thermostat is actively working to reach the target temperature.
     var dialState = 'off';
-    if(this.props.hvacMode === 'heating' && this.props.ambientTemperature < this.props.targetTemperature) {
+    if(this.props.hvacMode === 'heating') {
       dialState = 'heating';
     }
-    else if(this.props.hvacMode === 'cooling' && this.props.ambientTemperature > this.props.targetTemperature) {
+    else if(this.props.hvacMode === 'cooling') {
       dialState = 'cooling';
     }
 
