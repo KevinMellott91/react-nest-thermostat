@@ -19,6 +19,13 @@ a:hover {
   border: 1px solid #fff;
 }
 
+.space-after {
+  margin-bottom: 25px;
+}
+.space-before {
+  margin-top: 25px;
+}
+
 
 /*
  * Base structure

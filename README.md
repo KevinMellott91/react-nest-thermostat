@@ -1,12 +1,15 @@
 ## React Nest Thermostat
 This (unofficial) React component provides a basic display of the Nest thermostat.
 
+### Live Demo
+View the [live demo](https://run.plnkr.co/plunks/SYkIZmFFL8tCHnTHMGJY/)! Note that this demo uses pre-compiled code, so it's a little messy to examine.
+
 ### Installation
 ```
 npm install react-nest-thermostat
 ```
 
-### Demo
+### Example Usage
 You can run built-in demo example via few simple steps:<br />
 1. `git clone https://github.com/KevinMellott91/react-nest-thermostat.git`<br />
 2. `cd react-nest-thermostat`<br />
@@ -16,6 +19,7 @@ You can run built-in demo example via few simple steps:<br />
 
 ### Component (primary) properties
 - `away` (Boolean) - true/false to indicate if the Nest is in "away mode"
+- `leaf` (Boolean) - true/false to indicate if the Nest is in "energy savings mode"
 - `ambientTemperature` (Integer) - actual temperature detected by the Nest
 - `targetTemperature` (Integer) - target temperature provided to the Nest
 - `hvacMode` (String) - status of the HVAC operations

@@ -48,6 +48,7 @@ var Thermostat = React.createClass({
       minValue: 50,
       maxValue: 85,
       away: false,
+      leaf: false,
       ambientTemperature: 74,
       targetTemperature: 68,
       hvacMode: 'off' // off, heating, cooling
@@ -133,7 +134,7 @@ var Thermostat = React.createClass({
       'width': this.props.width,
       'height': this.props.height,
       'viewBox': '0 0 ' + this.props.diameter + ' ' + this.props.diameter,
-      'className': 'dial dial--state--' + dialState + (this.props.away ? ' away' : '')
+      'className': 'dial dial--state--' + dialState + (this.props.away ? ' away' : '') + (this.props.leaf ? ' has-leaf' : '')
     },
       React.createElement('circle', {
         'cx': radius,

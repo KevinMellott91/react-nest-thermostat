@@ -15,7 +15,8 @@ var App = React.createClass({
       away: false,
       ambientTemperature: 74,
       targetTemperature: 68,
-      hvacMode: 'off'
+      hvacMode: 'off',
+      leaf: false,
     };
   },
   handleModeChange: function (event) {
@@ -30,6 +31,9 @@ var App = React.createClass({
   handleTargetTemperatureChange: function (event) {
     this.setState({targetTemperature: event.target.value})
   },
+  handleLeafChange: function (event) {
+    this.setState({leaf: JSON.parse(event.target.value)})
+  },
   render: function () {
     // Link the thermostat state to the application.
     var thermostat = React.createElement(Thermostat, {
@@ -38,18 +42,18 @@ var App = React.createClass({
       'away': this.state.away,
       'ambientTemperature': this.state.ambientTemperature,
       'targetTemperature': this.state.targetTemperature,
-      'hvacMode': this.state.hvacMode
+      'hvacMode': this.state.hvacMode,
+      'leaf': this.state.leaf
     });
 
     // Setup the example application element.
     var app = React.createElement('div', {},
       React.createElement('h1', {
-        'className': 'cover-heading'
+        'className': 'cover-heading space-after'
       }, 'react-nest-thermostat'),
       thermostat,
       React.createElement('div', {
-        'styleName': 'margin-top:50px',
-        'className': 'row'
+        'className': 'row space-before'
       },
         React.createElement('div', {
           'className': 'col-md-6'
@@ -68,25 +72,6 @@ var App = React.createClass({
               'max': this.props.maxTemperature,
               'onChange': this.handleAmbientTemperatureChange
             })
-          ),
-          React.createElement('div', {
-            'className': 'form-group'
-          },
-            React.createElement('select', {
-              'id': 'hvacModePicker',
-              'className': 'selectpicker',
-              'onChange': this.handleHvacModeChange
-            },
-              React.createElement('option', {
-                'value': 'off'
-              }, 'Off'),
-              React.createElement('option', {
-                'value': 'heating'
-              }, 'Heating'),
-              React.createElement('option', {
-                'value': 'cooling'
-              }, 'Cooling')
-            )
           )
         ),
         React.createElement('div', {
@@ -106,10 +91,47 @@ var App = React.createClass({
               'max': this.props.maxTemperature,
               'onChange': this.handleTargetTemperatureChange
             })
-          ),
+          )
+        )
+      ),
+      React.createElement('div', {
+        'className': 'row space-before'
+      },
+        React.createElement('div', {
+          'className': 'col-md-4'
+        },
           React.createElement('div', {
             'className': 'form-group'
           },
+            React.createElement('label', {
+              'htmlFor': 'hvacModePicker'
+            }, 'State'),
+            React.createElement('select', {
+              'id': 'hvacModePicker',
+              'className': 'selectpicker',
+              'onChange': this.handleHvacModeChange
+            },
+              React.createElement('option', {
+                'value': 'off'
+              }, 'Off'),
+              React.createElement('option', {
+                'value': 'heating'
+              }, 'Heating'),
+              React.createElement('option', {
+                'value': 'cooling'
+              }, 'Cooling')
+            )
+          )
+        ),
+        React.createElement('div', {
+          'className': 'col-md-4'
+        },
+          React.createElement('div', {
+            'className': 'form-group'
+          },
+            React.createElement('label', {
+              'htmlFor': 'modePicker'
+            }, 'Away'),
             React.createElement('select', {
               'id': 'modePicker',
               'className': 'selectpicker',
@@ -117,10 +139,33 @@ var App = React.createClass({
             },
               React.createElement('option', {
                 'value': false
-              }, 'Home'),
+              }, 'No'),
               React.createElement('option', {
                 'value': true
-              }, 'Away')
+              }, 'Yes')
+            )
+          )
+        ),
+        React.createElement('div', {
+          'className': 'col-md-4'
+        },
+          React.createElement('div', {
+            'className': 'form-group'
+          },
+            React.createElement('label', {
+              'htmlFor': 'leafPicker'
+            }, 'Leaf'),
+            React.createElement('select', {
+              'id': 'leafPicker',
+              'className': 'selectpicker',
+              'onChange': this.handleLeafChange
+            },
+              React.createElement('option', {
+                'value': false
+              }, 'No'),
+              React.createElement('option', {
+                'value': true
+              }, 'Yes')
             )
           )
         )
