@@ -1,6 +1,6 @@
 {
   "name": "react-nest-thermostat",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A React.js component for displaying the face of a Nest thermostat.",
   "main": "src/react-nest-thermostat.js",
   "scripts": {
