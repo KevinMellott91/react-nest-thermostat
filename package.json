@@ -1,10 +1,10 @@
 {
   "name": "react-nest-thermostat",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A React.js component for displaying the face of a Nest thermostat.",
   "main": "src/react-nest-thermostat.js",
   "scripts": {
-    "basic-example": "browserify -t babelify example/js/index.js -o example/js/bundle.js && node example/js/basic.js"
+    "basic-example": "browserify -t [ babelify --presets [ react ] ] example/js/index.js -o example/js/bundle.js && node example/js/basic.js"
   },
   "repository": {
     "type": "git",

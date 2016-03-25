@@ -5,6 +5,15 @@ const Thermostat = require('../../src/react-nest-thermostat.js');
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    // Bind to the event handlers.
+    this.handleModeChange = this.handleModeChange.bind(this);
+    this.handleHvacModeChange = this.handleHvacModeChange.bind(this);
+    this.handleAmbientTemperatureChange = this.handleAmbientTemperatureChange.bind(this);
+    this.handleTargetTemperatureChange = this.handleTargetTemperatureChange.bind(this);
+    this.handleLeafChange = this.handleLeafChange.bind(this);
+
+    // Set the initial state.
     this.state = {
       away: false,
       ambientTemperature: 74,
@@ -35,143 +44,72 @@ class App extends React.Component {
   }
 
   render() {
-    // Link the thermostat state to the application.
-    const thermostat = React.createElement(Thermostat, {
-      height: '400px',
-      width: '400px',
-      away: this.state.away,
-      ambientTemperature: this.state.ambientTemperature,
-      targetTemperature: this.state.targetTemperature,
-      hvacMode: this.state.hvacMode,
-      leaf: this.state.leaf,
-    });
-
-    // Setup the example application element.
-    const app = React.createElement('div', {},
-      React.createElement('h1', {
-        className: 'cover-heading space-after',
-      }, 'react-nest-thermostat'),
-      thermostat,
-      React.createElement('div', {
-        className: 'row space-before',
-      },
-        React.createElement('div', {
-          className: 'col-md-6',
-        },
-          React.createElement('div', {
-            className: 'form-group',
-          },
-            React.createElement('label', {
-              htmlFor: 'ambientTemperature',
-            }, 'Ambient Temperature'),
-            React.createElement('input', {
-              id: 'ambientTemperature',
-              type: 'range',
-              defaultValue: this.state.ambientTemperature,
-              min: this.props.minTemperature,
-              max: this.props.maxTemperature,
-              onChange: this.handleAmbientTemperatureChange.bind(this),
-            })
-          )
-        ),
-        React.createElement('div', {
-          className: 'col-md-6',
-        },
-          React.createElement('div', {
-            className: 'form-group',
-          },
-            React.createElement('label', {
-              htmlFor: 'targetTemperature',
-            }, 'Target Temperature'),
-            React.createElement('input', {
-              id: 'targetTemperature',
-              type: 'range',
-              defaultValue: this.state.targetTemperature,
-              min: this.props.minTemperature,
-              max: this.props.maxTemperature,
-              onChange: this.handleTargetTemperatureChange.bind(this),
-            })
-          )
-        )
-      ),
-      React.createElement('div', {
-        className: 'row space-before',
-      },
-        React.createElement('div', {
-          className: 'col-md-4',
-        },
-          React.createElement('div', {
-            className: 'form-group',
-          },
-            React.createElement('label', {
-              htmlFor: 'hvacModePicker',
-            }, 'State'),
-            React.createElement('select', {
-              id: 'hvacModePicker',
-              className: 'selectpicker',
-              onChange: this.handleHvacModeChange.bind(this),
-            },
-              React.createElement('option', {
-                value: 'off',
-              }, 'Off'),
-              React.createElement('option', {
-                value: 'heating',
-              }, 'Heating'),
-              React.createElement('option', {
-                value: 'cooling',
-              }, 'Cooling')
-            )
-          )
-        ),
-        React.createElement('div', {
-          className: 'col-md-4',
-        },
-          React.createElement('div', {
-            className: 'form-group',
-          },
-            React.createElement('label', {
-              htmlFor: 'modePicker',
-            }, 'Away'),
-            React.createElement('select', {
-              id: 'modePicker',
-              className: 'selectpicker',
-              onChange: this.handleModeChange.bind(this),
-            },
-              React.createElement('option', {
-                value: false,
-              }, 'No'),
-              React.createElement('option', {
-                value: true,
-              }, 'Yes')
-            )
-          )
-        ),
-        React.createElement('div', {
-          className: 'col-md-4',
-        },
-          React.createElement('div', {
-            className: 'form-group',
-          },
-            React.createElement('label', {
-              htmlFor: 'leafPicker',
-            }, 'Leaf'),
-            React.createElement('select', {
-              id: 'leafPicker',
-              className: 'selectpicker',
-              onChange: this.handleLeafChange.bind(this),
-            },
-              React.createElement('option', {
-                value: false,
-              }, 'No'),
-              React.createElement('option', {
-                value: true,
-              }, 'Yes')
-            )
-          )
-        )
-      )
+    return (
+      <div>
+        <h1 className="cover-heading space-after">react-nest-thermostat</h1>
+        <Thermostat height="400px" width="400px" away={this.state.away}
+          ambientTemperature={this.state.ambientTemperature}
+          targetTemperature={this.state.targetTemperature}
+          hvacMode={this.state.hvacMode} leaf={this.state.leaf}
+        />
+        <div className="row space-before">
+          <div className="col-md-6">
+            <div className="form-group">
+              <label htmlFor="ambientTemperature">Ambient Temperature</label>
+              <input id="ambientTemperature" type="range"
+                defaultValue={this.state.ambientTemperature}
+                min={this.props.minTemperature} max={this.props.maxTemperature}
+                onChange={this.handleAmbientTemperatureChange}
+              ></input>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="form-group">
+              <label htmlFor="targetTemperature">Target Temperature</label>
+              <input id="targetTemperature" type="range"
+                defaultValue={this.state.targetTemperature}
+                min={this.props.minTemperature} max={this.props.maxTemperature}
+                onChange={this.handleTargetTemperatureChange}
+              ></input>
+            </div>
+          </div>
+        </div>
+        <div className="row space-before">
+          <div className="col-md-4">
+            <div className="form-group">
+              <label htmlFor="hvacModePicker">State</label>
+              <select id="hvacModePicker" className="selectpicker"
+                onChange={this.handleHvacModeChange}
+              >
+                <option value="off">Off</option>
+                <option value="heating">Heating</option>
+                <option value="cooling">Cooling</option>
+              </select>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="form-group">
+              <label htmlFor="modePicker">Away</label>
+              <select id="modePicker" className="selectpicker"
+                onChange={this.handleModeChange}
+              >
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+              </select>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="form-group">
+              <label htmlFor="leafPicker">Leaf</label>
+              <select id="leafPicker" className="selectpicker" onChange={this.handleLeafChange}>
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
     );
-    return app;
   }
 }
 
@@ -189,6 +127,6 @@ App.defaultProps = {
 
 // Render the application in the reserved placeholder element.
 ReactDOM.render(
-  React.createElement(App),
+  <App />,
   document.getElementById('app')
 );
