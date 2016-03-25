@@ -1,3 +1,5 @@
+'use strict';
+
 const React = require('react');
 const ReactDOM = require('react-dom');
 const Thermostat = require('../../src/react-nest-thermostat.js');

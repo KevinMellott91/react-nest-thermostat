@@ -1,3 +1,5 @@
+'use strict';
+
 const React = require('react');
 
 class Thermostat extends React.Component {
