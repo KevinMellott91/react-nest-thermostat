@@ -1,11 +1,16 @@
 {
   "name": "react-nest-thermostat",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A React.js component for displaying the face of a Nest thermostat.",
-  "main": "src/react-nest-thermostat.js",
+  "main": "dist/react-nest-thermostat.js",
   "scripts": {
-    "basic-example": "browserify -t [ babelify --presets [ react ] ] example/js/index.js -o example/js/bundle.js && node example/js/basic.js"
+    "basic-example": "npm run compile && browserify -t [ babelify --presets [ react ] ] example/js/index.js -o example/js/bundle.js && node example/js/basic.js",
+    "compile": "babel --presets react src/react-nest-thermostat.js --out-file dist/react-nest-thermostat.js",
+    "prepublish": "npm run compile"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/kevinmellott91/react-nest-thermostat.git"

@@ -2,7 +2,7 @@
 
 const React = require('react');
 const ReactDOM = require('react-dom');
-const Thermostat = require('../../src/react-nest-thermostat.js');
+const Thermostat = require('../../dist/react-nest-thermostat.js');
 
 class App extends React.Component {
   constructor(props) {
