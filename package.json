@@ -1,6 +1,6 @@
 {
   "name": "react-nest-thermostat",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A React.js component for displaying the face of a Nest thermostat.",
   "main": "dist/react-nest-thermostat.js",
   "scripts": {
@@ -43,6 +43,7 @@
   "homepage": "https://github.com/kevinmellott91/react-nest-thermostat",
   "devDependencies": {
     "babel-preset-react": "6.5.0",
+    "babel-cli": "6.5.0",
     "babelify": "7.2.0",
     "browserify": "13.0.0",
     "eslint": "^2.4.0",
